@@ -29,6 +29,16 @@ public class CustomerService {
 		this.customerRepository.persist(mapCustomerDTOToModel(dto));
 	}
 	
+	public void changeCustomer(Long id, CustomerDTO dto) {
+		CustomerEntity entity = this.customerRepository.findById(id);
+		mapCustomerDTOToModel(dto);
+		this.customerRepository.persist(entity);
+	}
+	
+	public void deleteCustomer(Long id) {
+		this.customerRepository.deleteById(id);
+	}
+	
 	private CustomerEntity mapCustomerDTOToModel(CustomerDTO dto) {
 		CustomerEntity model = new CustomerEntity();
 		
