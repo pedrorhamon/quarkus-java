@@ -25,6 +25,22 @@ public class CustomerService {
 		return customers;
 	}
 	
+	public void createNewCustomer(CustomerDTO dto) {
+		this.customerRepository.persist(mapCustomerDTOToModel(dto));
+	}
+	
+	private CustomerEntity mapCustomerDTOToModel(CustomerDTO dto) {
+		CustomerEntity model = new CustomerEntity();
+		
+		model.setAddress(dto.getAddress());
+		model.setAge(dto.getAge());
+		model.setEmail(dto.getEmail());
+		model.setName(dto.getName());
+		model.setPhone(dto.getPhone());
+		
+		return model;
+	} 
+	
 	private CustomerDTO mapCustomerEntityToDTO(CustomerEntity entity) {
 		CustomerDTO dto = new CustomerDTO();
 		
