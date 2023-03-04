@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -51,5 +52,12 @@ public class CustomerController {
 			e.printStackTrace();
 			return Response.serverError().build();
 		}
+	}
+	
+	@DELETE
+	@Path("/{id}")
+	@Transactional
+	public void deleteCustomer(@PathParam("id")Long id) {
+		this.service.deleteCustomer(id);
 	}
 }
