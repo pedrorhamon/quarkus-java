@@ -31,7 +31,11 @@ public class CustomerService {
 	
 	public void changeCustomer(Long id, CustomerDTO dto) {
 		CustomerEntity entity = this.customerRepository.findById(id);
-		mapCustomerDTOToModel(dto);
+		entity.setAddress(dto.getAddress());
+		entity.setAge(dto.getAge());
+		entity.setEmail(dto.getEmail());
+		entity.setName(dto.getName());
+		entity.setPhone(dto.getPhone());
 		this.customerRepository.persist(entity);
 	}
 	
